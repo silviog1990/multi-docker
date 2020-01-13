@@ -35,11 +35,19 @@ const redisPublisher = redisClient.duplicate();
 
 // Express route handlers
 
+app.use((req, res, next) => {
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log(fullUrl);
+  next();
+});
+
 app.get('/', (req, res) => {
   res.send('Hi');
 });
 
 app.get('/values/all', async (req, res) => {
+  var fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
+  console.log(fullUrl);
   const values = await pgClient.query('SELECT * from values');
 
   res.send(values.rows);
