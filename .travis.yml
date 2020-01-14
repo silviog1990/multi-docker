@@ -15,7 +15,7 @@ after_success:
   - docker build -t silviog1990/multi-server ./server
   - docker build -t silviog1990/multi-worker ./worker
   # login into dockerhub
-  - echo "$DOCKERHUB_PASSWORD" | docker login -u "DOCKERHUB_ID" --password-stdin
+  - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_ID" --password-stdin
   - docker push silviog1990/multi-nginx 
   - docker push silviog1990/multi-client
   - docker push silviog1990/multi-server
