@@ -21,15 +21,14 @@ after_success:
   - docker push silviog1990/multi-server
   - docker push silviog1990/multi-worker
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: eu-west-1
-#   app: app_name
-#   env: env_ebs_name
-#   bucket_name: bucket_name
-#   bucket_path: bucket_path
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: $AWS_SECRET_KEY
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-eu-west-1-621061859935
+  bucket_path: multi-docker
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
